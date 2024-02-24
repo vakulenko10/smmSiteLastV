@@ -1,20 +1,19 @@
 // SectionItem.js
 import React from 'react';
-
-const Section = ({ sectionName, sectionData, className }) => {
+import SectionItem from './SectionItem'
+import { sectionClasses } from './mainconsts';
+import Container from './Container'
+import {collectionsToSections} from './mainconsts'
+const Section = ({ collectionName, sectionData, className }) => {
   return (
-    <div className={`section w-full h-[100vh] ${className}`}>
-      <h2>{sectionName}</h2>
+    <div id={collectionsToSections[collectionName]} className={`${collectionsToSections[collectionName]} section w-full h-[100vh] overflow-hidden box-border ${className} ${sectionClasses[collectionName]}`}>
+      <Container>
+      <h2>{collectionsToSections[collectionName]}</h2>
       {sectionData.map((item, index) => (
         <div key={index}>
-          
-          {Object.keys(item).map((itemProperty, indexProp) => (
-            <div key={indexProp}>
-              {itemProperty}: {item[itemProperty]}
-            </div>
-          ))}
+           <SectionItem item={item} collectionName={collectionName}/>
         </div>
-      ))}
+      ))}</Container>
     </div>
   );
 };

@@ -10,14 +10,14 @@
 //         'FAQS': FAQSItem
 //       };
 //   // export const sectionList = Object.keys(sectionToModelMap);
-// //   export function getModelProperties(sectionName) {
-// //         const model = sectionToModelMap[sectionName];
+// //   export function getModelProperties(collectionName) {
+// //         const model = sectionToModelMap[collectionName];
 // //         return model ? Object.keys(model.schema.paths) : null;
 // //       }
 //   export async function GET(req, { params }) {
 //     try {
       
-//     //   console.log("params.sectionName: ", params.sectionName)
+//     //   console.log("params.collectionName: ", params.collectionName)
 //       console.log('Starting GET method');
 //       await connectMongoDB();
 //       console.log('Connected to MongoDB');
@@ -26,14 +26,14 @@
 //     console.log("collections:",collections)
 //     //   console.log("Keys in sectionToModelMap:", Object.keys(sectionToModelMap));
 //     //   console.log("params:", params)
-//     //   const model = sectionToModelMap[params.sectionName];
-//     //   console.log("sectionToModelMap[params.sectionName]", sectionToModelMap[params.sectionName])
+//     //   const model = sectionToModelMap[params.collectionName];
+//     //   console.log("sectionToModelMap[params.collectionName]", sectionToModelMap[params.collectionName])
 //     //   console.log("model:", model)
       
 //       if (!model) {
-//         return NextResponse.error({ message: 'Invalid sectionName' }, { status: 400 });
+//         return NextResponse.error({ message: 'Invalid collectionName' }, { status: 400 });
 //       }
-//     //   const modelProperties = getModelProperties(params.sectionName);
+//     //   const modelProperties = getModelProperties(params.collectionName);
 //       const contentItems = await model.find();
 //       console.log('Content items:', contentItems);
 
@@ -76,7 +76,7 @@ export async function GET(req, { params }) {
 // import mongoose from "mongoose";
 
 // export async function GET(req, { params }) {
-//   // const { sectionName } = params;
+//   // const { collectionName } = params;
 //   try {
 //     console.log('Starting GET method');
 //     await connectMongoDB();

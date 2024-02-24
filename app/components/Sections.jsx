@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
 import Section from './Section'
+import { SectionIndex } from './mainconsts'
 // import { filterDataByLanguage } from './utils'; // Import the filterDataByLanguage function
 export const filterDataByLanguage = (data) => {
     const unwantedProps = ["_id", "updatedAt", "createdAt", "__v"];
@@ -35,6 +36,7 @@ export const filterDataByLanguage = (data) => {
     console.log("filteredData:", filteredData)
     return filteredData;
   };
+  
 function Sections() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -74,9 +76,11 @@ function Sections() {
   // Assuming your data is an object where keys are collection names
   return (
     <ul>
-    {Object.keys(data).map((section, index)=>{
-       return <li key={index}> <Section sectionName={section} sectionData={data[section]} className={`bg-[#ff2727]`}/></li>
-    })}
+    {Object.keys(SectionIndex).map((collectionName, index) => (
+        <li key={index}>
+          <Section collectionName={collectionName} index={index} sectionData={data[collectionName]} />
+        </li>
+      ))}
   </ul>
   );
 }
