@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Container = ({children}) => {
+const Container = ({children, classes}) => {
   return (
-    <div className={`max-w-[1240px] mx-auto p-0`}>{children}</div>
+    <div className={`h-full max-w-[1240px] px-4 l:px-0 mx-auto p-0 ${classes}`}>{children}</div>
   )
 }
 

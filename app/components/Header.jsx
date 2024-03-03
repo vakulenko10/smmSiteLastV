@@ -16,7 +16,7 @@ const Header = () => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
       setWindowYPosition(currentScrollPos);
-      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 50);
+      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < window.innerHeight-1);
       setPrevScrollPos(currentScrollPos);
     };
 
@@ -30,7 +30,7 @@ const Header = () => {
     setIsSmallHeaderActive(e.target.checked);
   };
   return (
-    <header className={`w-full bg-[#f8f8f8b1] backdrop-blur fixed z-[999] ${visible ? '' : 'hidden'} ${windowYPosition===0?"bg-transparent md:text-[#e9e9e9]":"bg-[#f8f8f8b1]"}`}>
+    <header className={`w-full bg-[#f8f8f8b1] backdrop-blur fixed z-[999] ${visible ? '' : 'hidden'} ${windowYPosition<window.innerHeight?"bg-transparent md:text-[#e9e9e9]":"bg-[#f8f8f8b1]"}`}>
       <Container>
         <nav className="px-4 lg:px-6 py-2.5 flex justify-between items-center">
           <h5 className={`text-2xl md:visible ${windowYPosition===0?'text-[#e9e9e9]':''} `}>anya trubitsyna</h5>

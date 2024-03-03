@@ -47,6 +47,9 @@ p{
   font-family: 'Montserrat', sans-serif;
 
 }
+button{
+  transition: .3s linear;
+}
 .burger {
   position: relative;
   width: 40px;
@@ -108,6 +111,22 @@ p{
   top: 28px;
   left: 5px;
 }
+@keyframes animateGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: animateGradient 5s linear infinite;
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
