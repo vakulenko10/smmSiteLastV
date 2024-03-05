@@ -77,7 +77,7 @@ const Section = ({ collectionName, renderType, className }) => {
   if(loading){
     return(
       <div id={collectionsToSections[collectionName]} className={`${collectionsToSections[collectionName]} section w-full h-[100vh] overflow-hidden box-border ${className} ${sectionClasses[collectionName]}`}>
-        <Container classes={`flex justify-center items-center`}>
+        <Container classes={`flex justify-center items-center h-full relative`}>
         <Loader />
         </Container>
       </div>
@@ -85,8 +85,8 @@ const Section = ({ collectionName, renderType, className }) => {
   }
   else{
     return (
-    <div id={collectionsToSections[collectionName]} className={`${collectionsToSections[collectionName]} section w-full h-[100vh] overflow-hidden box-border ${className} ${sectionClasses[collectionName]}`}>
-      <Container>
+    <div id={collectionsToSections[collectionName]} className={`${collectionsToSections[collectionName]} min-h-[100vh] section w-full  overflow-hidden box-border ${className} ${sectionClasses[collectionName]} `}>
+      <Container >
         {/* {JSON.stringify(data)} */}
         {RenderTypeToComponent(renderType, data)}
       </Container>

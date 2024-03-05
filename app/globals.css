@@ -126,7 +126,34 @@ button{
 .animate-gradient {
   animation: animateGradient 5s linear infinite;
 }
+.gradient{
+  background: linear-gradient(320deg, #b52c26, #d99592, #fefefe, #6a6a6a);
+  background-size: 800% 800%;
 
+  -webkit-animation: AnimationName 32s ease infinite;
+  -moz-animation: AnimationName 32s ease infinite;
+  animation: AnimationName 32s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:0% 69%}
+  50%{background-position:100% 32%}
+  100%{background-position:0% 69%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:0% 69%}
+  50%{background-position:100% 32%}
+  100%{background-position:0% 69%}
+}
+@keyframes AnimationName {
+  0%{background-position:0% 69%}
+  50%{background-position:100% 32%}
+  100%{background-position:0% 69%}
+}
+.PortfolioItemInfo{
+  scrollbar-width: thin;
+  scrollbar-color: rgb(150, 150, 150) rgb(0, 0, 0);
+}
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
