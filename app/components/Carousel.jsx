@@ -28,7 +28,7 @@ const Carousel = ({ sectionData }) => {
           className='relative h-full'
           
         >
-          <motion.div onClick={nextItem} className='h-[100vh] md:h-full md:grid md:grid-cols-2 gap-[10px] items-center justify-center relative flex flex-col' key={activeIndex}
+          <motion.div onClick={nextItem} className='h-[100vh] md:h-full md:grid md:grid-cols-2 gap-[10px] items-center justify-center relative flex flex-col overflow-hidden' key={activeIndex}
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
@@ -37,7 +37,7 @@ const Carousel = ({ sectionData }) => {
           <motion.div className='h-1/2 md:h-3/4 overflow-hidden relative' initial={{x: 100}} whileInView={{x:0}} >
             {/* Render image on the right side */}
             {activeItemProps.includes('imageURL') && (
-              <div className='relative flex h-full overflow-hidden justify-center items-center '>
+              <div className='w-full relative flex h-full overflow-hidden justify-center items-center '>
                 <img src={activeItem['imageURL']} className='h-full w-full md:h-full object-contain' alt="Image" />
                 {activeItemProps.includes('imageDate') && (
                   <h6 className='text-white absolute bottom-0 left-2/5 z-10'>{activeItem['imageDate']}</h6>
@@ -45,10 +45,10 @@ const Carousel = ({ sectionData }) => {
               </div>
             )}
           </motion.div>
-          <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{duration: 1}} className=' flex flex-col gap-[20px] justify-end text-center md:text-left items-center md:items-start text-white'>
+          <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{duration: 1}} className='relative flex flex-col gap-[20px] justify-end text-center md:text-left items-center md:items-start text-white'>
           
             {/* Render text data on the left side */}
-            <div className='text flex flex-col justify-between'>
+            <div className='w-full overflow-hidden  text break-words flex flex-wrap flex-col justify-between'>
               {activeItemProps.map((prop, index) => {
                 if (prop !== 'imageURL' && prop !== 'imageDate') {
                   return (
