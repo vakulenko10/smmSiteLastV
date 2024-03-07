@@ -2,7 +2,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import Container from './Container';
-import HeaderBurger from './headerBurger';
+import HeaderBurger from './HeaderBurger';
 import LinksContainer from './LinksContainer';
 
 // const [isSmallHeaderActive, setIsSmallHeaderActive] = useState(false);
