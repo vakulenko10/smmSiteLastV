@@ -13,11 +13,11 @@ const Accordion = ({ sectionData }) => {
   return (
     <AnimatePresence>
     <div className="h-full w-full flex justify-center items-center">
-      <motion.div ref={ref} className="accordion min-w-[300px] min-[350px]:w-[350px] md:w-[700px] max-w-lg rounded-[100px]" initial={{x: -300}} whileInView={{x: 0}} transition={{duration: 2}} >
+      <motion.div ref={ref} className="accordion w-full min-[350px]:w-[350px] md:w-[700px] max-w-lg rounded-[100px]" initial={{x: -300}} whileInView={{x: 0}} transition={{duration: 1}} >
         {sectionData.map((item, index) => (
-          <div className="accordion-item break-words" key={index}>
+          <div className="accordion-item break-words text-wrap" key={index}>
             <div
-              className={`accordion-title cursor-pointer py-4 px-6 bg-gray-200 border-b border-gray-300 flex justify-between ${index === activeIndex ? 'bg-gray-300' : ''}`}
+              className={`accordion-title cursor-pointer py-4 px-6 bg-gray-200 border-b border-gray-300 flex justify-between flex-wrap ${index === activeIndex ? 'bg-gray-300' : ''}`}
               onClick={() => onItemClick(index)}
             >
               {Object.keys(item).map((prop, index) => (

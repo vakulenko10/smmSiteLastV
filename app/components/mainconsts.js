@@ -16,7 +16,7 @@ export const Sections = Object.values(collectionsToSections);
 export const sectionClasses = {
     "helloitems": ` md:h-[100vh] bg-[url('https://res.cloudinary.com/dohnhiqxw/image/upload/v1709552848/myPortfolio/pahvlobc7wcm0sobs2uz.png')] pb-[10px] md:pb-0  bg-cover pt-[50px] md:pt-0 `,
     "myportfolioitems": 'bg-[#D99592]',
-    "faqsitems": 'bg-[#D99592] flex justify-center items-center',
+    "faqsitems": 'bg-[#D99592] py-[10px] flex justify-center items-center',
     "aboutmeitems": 'md:h-[100vh] bg-[#D99592] py-[10px] ',
     "myblogitems": 'md:h-[100vh] bg-[#D99592] py-[10px] '
   

@@ -41,7 +41,7 @@ const Gallery = ({ sectionData }) => {
           />
           {(selectedItem === sectionItem && selectedItem != null) && (
             <motion.div
-              className={`${isPortfolioItemOpened && selectedItem === sectionItem ? 'fixed top-0 left-0 w-screen h-screen flex justify-center items-center bg-[#0000008e] bg-opacity-50 z-[1000] py-10' : 'hidden'}`}
+              className={`${isPortfolioItemOpened && selectedItem === sectionItem ? 'fixed top-0 left-0 w-screen h-screen flex justify-center items-center bg-[#000000cd] bg-opacity-50 z-[1000] py-10' : 'hidden'}`}
             >
               <div className='PortfolioItemInfo p-4 h-full w-full overflow-y-scroll overflow-x-hidden text-wrap break-words'>
                 {selectedItem['imageURL']?<img src={selectedItem['imageURL']} key={index} alt={index} className='h-1/2 object-contain '/>:<></>}
