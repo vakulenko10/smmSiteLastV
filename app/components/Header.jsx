@@ -11,7 +11,7 @@ const Header = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
   const [isSmallHeaderActive, setIsSmallHeaderActive] = useState(false);
-  const [windowYPosition, setWindowYPosition] = useState(window.scrollY)
+  const [windowYPosition, setWindowYPosition] = useState(null)
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
