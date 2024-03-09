@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
 import Section from './Section';
 import { SectionIndex, SectionToRenderType, sectionClasses } from './mainconsts';
-
+import Container from './Container';
+import Loader from './Loader';
 function Sections() {
   const [collections, setCollections] = useState([]);
   const [error, setError] = useState(null);
@@ -33,7 +34,9 @@ function Sections() {
   }
 
   if (!collections.length) {
-    return <div>Loading...</div>;
+    return <Container  classes={`flex justify-center items-center h-screen relative`}>
+        <Loader/>
+    </Container>
   }
 
   return (
