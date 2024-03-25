@@ -27,12 +27,12 @@ const filterDataByLanguage = (collectionData, language) => {
 
 
 
-const Section = ({ collectionName, renderType, className }) => {
+const Section = ({ collectionName, renderType, className, backgroundItem}) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { language } = useLanguage();
-
+  
   useEffect(() => {
     async function fetchData() {
       try {
@@ -85,11 +85,14 @@ const Section = ({ collectionName, renderType, className }) => {
   }
   else{
     return (
-    <div id={collectionsToSections[collectionName]} className={`${collectionsToSections[collectionName]} min-h-[100vh] section w-full  overflow-hidden box-border ${className} ${sectionClasses[collectionName]} `}>
-      <Container >
+    <div id={collectionsToSections[collectionName]} className={`${collectionsToSections[collectionName]} relative  h-[100vh] section w-full  overflow-hidden box-border ${className} ${sectionClasses[collectionName]} `}>
+      {collectionsToSections[collectionName]!='welcome'?backgroundItem:null}
+      <Container classes={`${collectionsToSections[collectionName]==='welcome'?'px-0':'px-4'}relative`} >
         {/* {JSON.stringify(data)} */}
+        {/* {collectionsToSections[collectionName]!='welcome'?<div className='relative flex justify-center items-center'><h1 className='text-center  capitalize my-5 text-white z-10 md:sectionTitle'>{collectionsToSections[collectionName]}</h1></div>:null} */}
         {RenderTypeToComponent(renderType, data)}
       </Container>
+      {collectionsToSections[collectionName]==='welcome'?backgroundItem:null}
     </div>
   );}
 };

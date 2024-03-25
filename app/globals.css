@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 *{
   margin: 0;
   padding: 0;
@@ -96,7 +97,20 @@ button{
   top: 0px;
   transform-origin: left center;
 }
-
+.welcome h2 {
+  @apply font-bold mb-3  text-[#9CAFAA]  lg:w-[500px] self-end md:text-[#EFBC9B] bg-[#FBF3D5] rounded-full  px-3;
+}
+@layer base {
+  .font-Dancing {
+    font-family: 'Dancing Script', cursive;
+  }
+}
+.welcome h4 {
+  @apply text-[50px]  text-[#FBF3D5] md:text-[#FBF3D5]  font-Dancing font-bold rounded-full px-3;
+}
+/* .zakladka1 {
+  @apply  bg-[#EFBC9B] w-full my-5 h-10 rounded-r-none font-bold rounded-full px-3;
+} */
 .burger span:nth-of-type(2) {
   top: 50%;
   transform: translateY(-50%);

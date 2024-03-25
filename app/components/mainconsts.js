@@ -14,11 +14,11 @@ export const collectionsToSections = {
 }
 export const Sections = Object.values(collectionsToSections);
 export const sectionClasses = {
-    "helloitems": ` md:h-[100vh] bg-[url('https://res.cloudinary.com/dohnhiqxw/image/upload/v1709552848/myPortfolio/pahvlobc7wcm0sobs2uz.png')] pb-[10px] md:pb-0  bg-cover pt-[50px] md:pt-0 `,
-    "myportfolioitems": 'bg-[#D99592]',
-    "faqsitems": 'bg-[#D99592] py-[10px] flex justify-center items-center',
-    "aboutmeitems": 'md:h-[100vh] bg-[#D99592] py-[10px] ',
-    "myblogitems": 'md:h-[100vh] bg-[#D99592] py-[10px] '
+  "helloitems": `overflow-x-hidden relative h-screen bg-[#D6DAC8]  bg-center pb-[10px] md:pb-0  bg-contain  `,
+    "myportfolioitems": 'relative bg-[#FBF3D5]',
+    "faqsitems": 'relative bg-[#D99592] py-[10px] flex justify-center items-center',
+    "aboutmeitems": 'relative md:h-[100vh] bg-[#9CAFAA] py-[10px] ',
+    "myblogitems": 'relative md:h-[100vh] bg-[#D99592] py-[10px] '
   
   }
 
@@ -30,13 +30,16 @@ export const SectionToRenderType = {
     "myblogitems":"carousel"
 }
 export function renderTextByProperty(property, text, key, className) {
+    const words = text.split(' ');
     if (property.includes('Title')) {
-      return <h1 className={`${className}`} key={key}>{text}</h1>;
+      return <h1 className={`${className}`} key={key}>{words.map((word, index) => (
+        <span key={index} className={`span-${index}`}>{word}</span> // Wrap each word in a span element with its own index
+      ))}</h1>;
     } else if (property.includes('Description')) {
       return <h4 className={`${className}`} key={key}>{text}</h4>;
     }
     else if (property.includes('Welcome')) {
-      return <h2 className={`${className}`} key={key}>{text}</h2>;
+      return <h2 className={`${className} `} key={key}>{text}</h2>;
     }
     else if (property.includes('Question')) {
       return <h5 className={`${className}`} key={key}>{text}</h5>;
