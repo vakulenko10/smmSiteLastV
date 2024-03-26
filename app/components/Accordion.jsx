@@ -24,8 +24,8 @@ const Accordion = ({ sectionData }) => {
               onClick={() => onItemClick(index)}
             >
               {Object.keys(item).map((prop, index) => (
-                prop.includes('Question')?
-               renderTextByProperty(prop, item[prop], index, `w-3/4 text-wrap overflow-hidden box-border break-words text-lg flex text-[#5c6764] font-semibold ${language=="ua"?'font-Caveat':''}`):''
+                prop.includes('Question')&&
+               renderTextByProperty(prop, item[prop], index, `w-3/4 text-wrap overflow-hidden box-border break-words text-lg flex text-[#5c6764] font-semibold ${language=="ua"?'font-Caveat':''}`)
                 // prop.includes('Question') && (
                 //   <h5 key={item[prop]+ `${index}`} className="w-3/4 text-wrap overflow-hidden box-border break-words text-lg flex text-[#5c6764] font-semibold">{item[prop]}</h5>
                 // )
@@ -43,8 +43,8 @@ const Accordion = ({ sectionData }) => {
                 className="accordion-content   py-4 px-6 ]"
               >
                 {Object.keys(item).map((prop, index) => (
-                  prop.includes('Answer')?
-                  renderTextByProperty(prop, item[prop], index, `text-base `):''
+                  prop.includes('Answer')&&
+                  renderTextByProperty(prop, item[prop], index, `text-base `)
                 // prop.includes('Answer') && (
                   //   <h3 key={item[prop]+ `${index}`} className="text-base ">{item[prop]}</h3>
                   // )

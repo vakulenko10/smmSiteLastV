@@ -86,7 +86,7 @@ const Section = ({ collectionName, renderType, className, backgroundItem}) => {
   else{
     return (
     <div key={`${collectionName}-section`} id={collectionsToSections[collectionName]} className={`${collectionsToSections[collectionName]} relative section w-full  overflow-hidden box-border ${className} ${sectionClasses[collectionName]} `}>
-      {backgroundItem?backgroundItem:null}
+      {backgroundItem&&backgroundItem}
       <Container key={`${collectionsToSections[collectionName]}-container`} classes={`relative ${collectionsToSections[collectionName]==='welcome'?'px-2':'px-4'} `} >
         {/* {JSON.stringify(data)} */}
         {/* {collectionsToSections[collectionName]!='welcome'?<div className='relative flex justify-center items-center'><h1 className='text-center  capitalize my-5 text-white z-10 md:sectionTitle'>{collectionsToSections[collectionName]}</h1></div>:null} */}
