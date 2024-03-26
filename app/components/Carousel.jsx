@@ -11,8 +11,8 @@ const Carousel = ({ sectionData }) => {
   const nextItem = () => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % dataLength);
   };
-  const goToItem = (index) => {
-    setActiveIndex(index);
+  const previousItem = (index) => {
+    setActiveIndex((prevIndex) => (prevIndex - 1 + dataLength) % dataLength);
   };
   // const prevItem = () => {
   //   setActiveIndex((prevIndex) => (prevIndex - 1 + dataLength) % dataLength);
@@ -28,7 +28,7 @@ const Carousel = ({ sectionData }) => {
           className='relative h-full'
           
         >
-          <motion.div onClick={nextItem} className='h-[100vh] md:h-full md:grid md:grid-cols-2 gap-[10px] items-center justify-center relative flex flex-col overflow-hidden' key={activeIndex}
+          <motion.div className='h-[100vh] md:h-full md:grid md:grid-cols-2 gap-[10px] items-center justify-center relative flex flex-col overflow-hidden' key={'dmgkz'}
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
@@ -65,14 +65,21 @@ const Carousel = ({ sectionData }) => {
           </motion.div>
       </AnimatePresence>
       <div className='absolute bottom-[20px] left-0 right-0 flex justify-center gap-2'>
-        {sectionData.map((item, index) => (
+       
+        <button onClick={previousItem} >
+          <FaArrowLeft className='fill-white'/>
+        </button> 
+        <button onClick={nextItem} >
+          <FaArrowRight className='fill-white'/>
+        </button>
+        {/* {sectionData.map((item, index) => (
           <FaCircle
             size={8}
             key={index}
             className={`cursor-pointer ${index === activeIndex ? 'fill-white' : 'fill-[#fff9]'}`}
             onClick={() => goToItem(index)}
           />
-        ))}
+        ))} */}
       </div>
         
     </div>

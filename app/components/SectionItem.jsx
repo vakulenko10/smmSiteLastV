@@ -4,7 +4,7 @@ const SectionItem = ({ collectionName, item, index }) => {
   return (
     <div className={`flex flex-col`}>
       {Object.keys(item).map((itemProperty, indexProp) => (
-        <div key={indexProp}>
+        <div key={indexProp* Math.random()}>
           {itemProperty === 'imageURL' ? (
             <img className={`w-[400px] h-auto`} src={item[itemProperty]} alt={itemProperty} />
           ) : (

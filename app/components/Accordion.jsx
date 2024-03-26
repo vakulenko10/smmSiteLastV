@@ -15,14 +15,14 @@ const Accordion = ({ sectionData }) => {
     <div className="h-full w-full flex justify-center items-center">
       <motion.div ref={ref} className="accordion w-full min-[350px]:w-[350px] md:w-[700px] max-w-lg rounded-[100px]" initial={{x: -300}} whileInView={{x: 0}} transition={{duration: 1}} >
         {sectionData.map((item, index) => (
-          <div className="accordion-item break-words text-wrap" key={index}>
+          <div className="accordion-item break-words text-wrap" key={item['imageURL']+`${index}`}>
             <div
               className={`accordion-title cursor-pointer py-4 px-6 bg-gray-200 border-b border-gray-300 flex justify-between flex-wrap ${index === activeIndex ? 'bg-gray-300' : ''}`}
               onClick={() => onItemClick(index)}
             >
               {Object.keys(item).map((prop, index) => (
                 prop.includes('Question') && (
-                  <h5 key={index} className="text-lg font-semibold">{item[prop]}</h5>
+                  <h5 key={item[prop]+ `${index}`} className="text-lg font-semibold">{item[prop]}</h5>
                 )
               ))}
               <button className="toggleOpen">
@@ -39,7 +39,7 @@ const Accordion = ({ sectionData }) => {
               >
                 {Object.keys(item).map((prop, index) => (
                   prop.includes('Answer') && (
-                    <h3 key={index} className="text-base">{item[prop]}</h3>
+                    <h3 key={item[prop]+ `${index}`} className="text-base">{item[prop]}</h3>
                   )
                 ))}
               </motion.div>

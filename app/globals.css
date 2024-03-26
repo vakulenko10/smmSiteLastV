@@ -2,7 +2,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 *{
   margin: 0;
   padding: 0;
@@ -98,15 +97,16 @@ button{
   transform-origin: left center;
 }
 .welcome h2 {
-  @apply font-bold mb-3  text-[#9CAFAA]  lg:w-[500px] self-end md:text-[#EFBC9B] bg-[#FBF3D5] rounded-full  px-3;
+  @apply font-bold mb-3  text-[#fff]  lg:w-[500px] self-end md:text-[#FBF3D5] bg-[#9CAFAA]  px-3;
 }
+
 @layer base {
   .font-Dancing {
     font-family: 'Dancing Script', cursive;
   }
 }
 .welcome h4 {
-  @apply text-[50px]  text-[#FBF3D5] md:text-[#FBF3D5]  font-Dancing font-bold rounded-full px-3;
+  @apply md:text-[50px]  text-[#EFBC9B] md:text-[#EFBC9B] bg-[#FBF3D5]  font-Dancing font-bold rounded-full px-3;
 }
 /* .zakladka1 {
   @apply  bg-[#EFBC9B] w-full my-5 h-10 rounded-r-none font-bold rounded-full px-3;
@@ -149,6 +149,10 @@ button{
   100% {
     background-position: 0% 50%;
   }
+}
+.PortfolioItemInfo{
+  scrollbar-width: thin;
+  scrollbar-color: rgb(150, 150, 150) rgb(0, 0, 0);
 }
 
 .animate-gradient {

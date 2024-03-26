@@ -1,4 +1,3 @@
-"use client"
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { renderTextByProperty } from './mainconsts';
@@ -6,61 +5,76 @@ import { renderTextByProperty } from './mainconsts';
 const Gallery = ({ sectionData }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [isPortfolioItemOpened, setIsPortfolioItemOpened] = useState(false);
+  const [isPortfolioOpened, setIsPortfolioOpened] = useState(false);
   const ref = useRef(null);
-  const isInView = useInView(ref)
+  const isInView = useInView(ref);
+
   const handleItemClick = (item) => {
-    console.log('item clicked')
     setIsPortfolioItemOpened(true);
     setSelectedItem(item);
   };
 
   const handleClose = (e) => {
     e.stopPropagation();
-    console.log('close')
     setIsPortfolioItemOpened(false);
     setSelectedItem(null);
   };
-  useEffect(()=>{
+
+  useEffect(() => {
     console.log("is in view:", isInView)
-  }, [isInView])
+  }, [isInView]);
+
+  const handlePortfolioOpened = () => {
+    setIsPortfolioOpened(true);
+  };
+
+  const handlePortfolioClose = () => {
+    console.log("close")
+    setIsPortfolioItemOpened(false);
+    setIsPortfolioOpened(false);
+  };
 
   return (
-    <motion.div className='py-[10px] flex flex-col justify-center items-center md:grid md:grid-cols-2 gap-[10px] md:grid-rows-2 h-full place-items-center' ref={ref} initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{duration: 1}}>
-      {sectionData.map((sectionItem, index) => (
-        <motion.div
-          key={index}
-          initial={{x: 100}} whileInView={{x: 0}}
-          className='box-border object-center	 overflow-hidden h-fit min-[300px]:h-[250px] w-3/4 md:w-auto md:h-[300px] relative'
-          whileHover={isPortfolioItemOpened?{}:{ scale: 1.05, transition: { duration: 0.3 } }}
-          onClick={() => handleItemClick(sectionItem)}
-        >
-          <img
-            className='object-cover object-center overflow-hidden box-border'
-            src={sectionItem['imageURL']}
-            alt={index}
-          />
-          {(selectedItem === sectionItem && selectedItem != null) && (
-            <motion.div
-              className={`${isPortfolioItemOpened && selectedItem === sectionItem ? 'fixed top-0 left-0 w-screen h-screen flex justify-center items-center bg-[#000000cd] bg-opacity-50 z-[1000] py-10' : 'hidden'}`}
-            >
-              <div className='PortfolioItemInfo p-4 h-full w-full overflow-y-scroll overflow-x-hidden text-wrap break-words'>
-                {selectedItem['imageURL']?<img src={selectedItem['imageURL']} key={index} alt={index} className='h-1/2 object-contain '/>:<></>}
-                {Object.keys(selectedItem).map((prop, index) => {
-                  if (prop !== 'imageURL') {
-                    return renderTextByProperty(prop, selectedItem[prop], index, 'text-white ');
-                  }
-                  return
-                  
-                })}
-
-                <button className='absolute top-0 right-0 mt-4 mr-4 bg-[#751a1ab1] text-white py-2 px-4 rounded-md z-[1]' onClick={handleClose}>
-                  Close
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </motion.div>
-      ))}
+    <motion.div className='relative py-[10px] flex flex-col justify-center items-center md:grid md:grid-cols-2 gap-[10px] md:grid-rows-2 h-full place-items-center' ref={ref} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
+      <motion.div className={` ${isPortfolioOpened ? 'grid grid-cols-3 pt-3 px-5 gap-3 w-screen overflow-x-hidden h-screen absolute top-0 overflow-y-visible bg-[#00000080] ' : 'w-1/2 h-[300px] bg-white'}`} onClick={handlePortfolioOpened}>
+        {sectionData.map((sectionItem, index) => (
+          <motion.div
+            key={index * Math.random()}
+            className={`${isPortfolioOpened ? 'block' : 'hidden'} ${isPortfolioItemOpened?'hidden':''} item w-full h-[200px] object-cover object-center overflow-hidden md:w-full md:h-64 bg-gray-200  rounded-lg relative`}
+            onClick={() => handleItemClick(sectionItem)}
+          >
+            <motion.img
+            whileHover={{ scale: 1.1 }} transition={{duration: 0.2}}
+              className='object-cover w-full item-hover:scale-50 rounded-lg'
+              src={sectionItem['imageURL']}
+              alt={index}
+            />
+          </motion.div>
+        ))}
+        {selectedItem && (
+          <motion.div
+            className={`${isPortfolioItemOpened ? 'absolute top-0 p-3 left-0 overflow-hidden h-full w-screen z-10 bg-[#000000]' : 'hidden'}`}
+          >
+            <div className='PortfolioItemInfo flex items-center box-border overflow-hidden text-wrap h-full rounded-md'>
+              <img src={selectedItem['imageURL']} alt='selected-item' className={` ${isPortfolioItemOpened ?'object-contain ':'object-cover'} w-1/2  rounded-md mb-4`}/>
+              {Object.keys(selectedItem).map((prop, index) => {
+                if (prop !== 'imageURL') {
+                  return <div className='break-words w-1/2'>{renderTextByProperty(prop, selectedItem[prop], index, 'text-white ')}</div>;
+                }
+                return null;
+              })}
+              <button className='absolute top-0 right-0 mt-2 mr-2 bg-gray-800 text-white py-1 px-2 rounded-md z-50' onClick={handleClose}>
+                Close
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </motion.div>
+      {isPortfolioOpened && (
+        <button className="absolute top-0 right-0 mt-2 mr-2 bg-gray-800 text-white py-1 px-2 rounded-md" onClick={handlePortfolioClose}>
+          Close portfolio
+        </button>
+      )}
     </motion.div>
   );
 };
