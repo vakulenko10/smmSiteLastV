@@ -6,7 +6,7 @@ const LanguageContext = createContext();
 export const useLanguage = () => useContext(LanguageContext);
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('ua'); // Default language is English
+  const [language, setLanguage] = useState('en'); // Default language is English
 
   const changeLanguage = (newLanguage) => {
     setLanguage(newLanguage);
