@@ -104,6 +104,9 @@ button{
   .font-Dancing {
     font-family: 'Dancing Script', cursive;
   }
+  .font-Caveat {
+    font-family: "Caveat", cursive;
+  }
 }
 .welcome h4 {
   @apply md:text-[50px]  text-[#EFBC9B] md:text-[#EFBC9B] bg-[#FBF3D5]  font-Dancing font-bold rounded-full px-3;

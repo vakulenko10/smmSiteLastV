@@ -46,7 +46,7 @@ const DefaultRenderComponent = ({ sectionData }) => {
                 transition={{ duration: 0.5, delay: 0.1, ease: easeInOut }} 
                 initial={{ opacity: 0, x: 400 }} 
                 animate={{ opacity: 1, x: 0 }} 
-                className='order-2 relative h-3/5 overflow-hidden flex md:h-screen object-contain justify-self-center justify-center items-center'
+                className='order-2 relative h-full overflow-hidden flex md:h-screen object-contain justify-self-center justify-center items-center'
                  // Ensure that any overflowing content is hidden
             >
                 {/* Render image on the right side */}

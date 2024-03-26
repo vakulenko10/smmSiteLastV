@@ -20,14 +20,14 @@ const filterDataByLanguage = (collectionData, language) => {
         }
       }
     }
-    console.log("filteredItems: ",filteredItems)
+    // console.log("filteredItems: ",filteredItems)
     return filteredItems;
   });
 };
 
 
 
-const Section = ({keyName, collectionName, renderType, className, backgroundItem}) => {
+const Section = ({ collectionName, renderType, className, backgroundItem}) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -37,12 +37,12 @@ const Section = ({keyName, collectionName, renderType, className, backgroundItem
     async function fetchData() {
       try {
         const response = await fetch(`/api/fetchContentFromDB/${collectionName}`);
-        console.log("response: ", response)
+        // console.log("response: ", response)
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
         const jsonData = await response.json(); 
-        console.log("jsonData: ",jsonData)
+        // console.log("jsonData: ",jsonData)
         const filteredData = filterDataByLanguage(jsonData.documents, language);
         setData(filteredData);
         setLoading(false)
@@ -73,11 +73,11 @@ const Section = ({keyName, collectionName, renderType, className, backgroundItem
       }
     
   };
-  console.log("data:", data)
+  // console.log("data:", data)
   if(loading){
     return(
-      <div id={collectionsToSections[collectionName]} className={`${collectionsToSections[collectionName]} section w-full h-[100vh] overflow-hidden box-border ${className} ${sectionClasses[collectionName]}`}>
-        <Container classes={`flex justify-center items-center h-full relative`}>
+      <div key={`${collectionName}-section`} id={collectionsToSections[collectionName]} className={`${collectionsToSections[collectionName]} section w-full h-[100vh] overflow-hidden box-border ${className} ${sectionClasses[collectionName]}`}>
+        <Container key={`${collectionName}-section-container`} classes={`flex justify-center items-center h-full relative`}>
         <Loader />
         </Container>
       </div>
@@ -85,9 +85,9 @@ const Section = ({keyName, collectionName, renderType, className, backgroundItem
   }
   else{
     return (
-    <div key={`${collectionName}`} id={collectionsToSections[collectionName]} className={`${collectionsToSections[collectionName]} relative section w-full  overflow-hidden box-border ${className} ${sectionClasses[collectionName]} `}>
-      {backgroundItem}
-      <Container key={collectionsToSections[collectionName]+'container'} classes={`relative ${collectionsToSections[collectionName]==='welcome'?'px-2':'px-4'} `} >
+    <div key={`${collectionName}-section`} id={collectionsToSections[collectionName]} className={`${collectionsToSections[collectionName]} relative section w-full  overflow-hidden box-border ${className} ${sectionClasses[collectionName]} `}>
+      {backgroundItem?backgroundItem:null}
+      <Container key={`${collectionsToSections[collectionName]}-container`} classes={`relative ${collectionsToSections[collectionName]==='welcome'?'px-2':'px-4'} `} >
         {/* {JSON.stringify(data)} */}
         {/* {collectionsToSections[collectionName]!='welcome'?<div className='relative flex justify-center items-center'><h1 className='text-center  capitalize my-5 text-white z-10 md:sectionTitle'>{collectionsToSections[collectionName]}</h1></div>:null} */}
         {RenderTypeToComponent(renderType, data)}

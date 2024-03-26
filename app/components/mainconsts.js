@@ -15,8 +15,8 @@ export const collectionsToSections = {
 export const Sections = Object.values(collectionsToSections);
 export const sectionClasses = {
   "helloitems": `overflow-x-hidden relative h-screen bg-[#D6DAC8]  bg-center pb-[10px] md:pb-0  bg-contain  `,
-    "myportfolioitems": 'relative bg-[#EFBC9B] h-[100vh] md:min-h-[100vh]',
-    "faqsitems": 'relative bg-[#FBF3D5] py-[10px] flex justify-center items-center',
+    "myportfolioitems": 'relative bg-[#9CAFAA] h-[100vh] md:min-h-[100vh]',
+    "faqsitems": 'relative min-h-[100vh] bg-[#9CAFAA] py-[10px] flex justify-center items-center',
     "aboutmeitems": 'relative md:h-[100vh] bg-[#9CAFAA] py-[10px] ',
     "myblogitems": 'relative md:h-[100vh] bg-[#FBF3D5] py-[10px] '
   
@@ -30,7 +30,7 @@ export const SectionToRenderType = {
     "myblogitems":"carousel"
 }
 export function renderTextByProperty(property, text, key, className) {
-    const words = text.split(' ');
+    
     if (property.includes('Title')) {
       return <h1 className={`${className}`} key={`${property}-${text}-${key}`}>{text}</h1>;
     } else if (property.includes('Description')) {
