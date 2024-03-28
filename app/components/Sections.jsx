@@ -114,7 +114,7 @@ export const MyBlogBg = ({collectionName}) => {
 function Sections() {
   const [collections, setCollections] = useState([]);
   const [error, setError] = useState(null);
-
+  const {language, setLanguage} = useLanguage()
   useEffect(() => {
     async function fetchData() {
       try {
@@ -155,7 +155,7 @@ function Sections() {
   }
 
   return (
-    <div>
+    <div className={`${language=="ua"?'uaLang':'enLang'}`}>
       {Object.entries(SectionIndex).map(([collectionName, index]) => (
         <div key={`${collectionName}-${index}`}>
           {/* Pass the collectionName and corresponding index as props to the Section component */}

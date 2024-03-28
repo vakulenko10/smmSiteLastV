@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <LanguageProvider>
-      <body className={inter.className}>
+      <body className={`${inter.className}`}>
         {children}</body>
       </LanguageProvider>
     </html>

@@ -1,14 +1,30 @@
 "use client"
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import { renderTextByProperty } from './mainconsts'
 import { easeInOut, motion } from 'framer-motion';
 import Link from 'next/link';
+import { useLanguage } from './LanguageContext';
 
 const DefaultRenderComponent = ({ sectionData }) => {
     const activeItem = sectionData[0];
     const activeItemProps = Object.keys(activeItem);
-    
+    const {language, setLanguage} = useLanguage();
+    const languageList = ['en', 'ua']
+    const [languageIndex, setLanguageIndex] = useState(0)
+    const changeLanguage = () => {
+        // Calculate the index of the next language
+        const nextLanguageIndex = (languageIndex + 1) % languageList.length;
+        // console.log('clicked')
+        // Update the language state directly
+        setLanguage(languageList[nextLanguageIndex]);
+      
+        // Update the languageIndex state
+        setLanguageIndex(nextLanguageIndex);
+      
+        // Close the small header
+        // setIsSmallHeaderActive(false);
+      }
     return (
         <div className='relative  h-full md:h-auto gap-1 flex flex-col justify-around items-center md:justify-around   md:flex-row md:items-center '>
            <motion.div 
@@ -22,22 +38,22 @@ const DefaultRenderComponent = ({ sectionData }) => {
                     {activeItemProps.map((prop, index) => {
                         if (prop !== 'imageURL') {
                             return (
-                                renderTextByProperty(prop, activeItem[prop], index, 'text-center text-white text-[40px] md:text-[70px] welcome')
+                                renderTextByProperty(prop, activeItem[prop], index, ` text-center text-white text-[40px] md:text-[70px] welcome`)
                             );
                         }
                         return null; // Skip rendering imageURL here
                     })}
-                    <div className='flex mt-3 flex-col md:flex-row justify-center items-center gap-1 md:gap-1'>
-                    <Link href="#Portfolio" className='w-full text-center md:w-1/3 p-3 bg-[#EFBC9B] rounded-full text-[#FBF3D5] '>
+                    <div className='flex mt-3 flex-col md:flex-row  justify-center items-center gap-1 md:gap-1'>
+                    <button href="#Portfolio"  onClick={changeLanguage} className={`w-full text-center md:w-1/3 p-3 bg-[#EFBC9B] rounded-full text-[#FBF3D5] `}>
                        
-                        <h5>see my portfolio</h5>
+                        {language=='ua'?<h5>змінити мову</h5>:<h5>change language</h5>}
                     
-                    </Link>
+                    </button>
                     <Link href="#mailme" className='w-full text-center   md:w-1/3 p-3 bg-[#EFBC9B] rounded-full text-[#FBF3D5]'>
-                        <h5>mail me</h5>
+                        {language=='ua'?<h5 >моя пошта</h5>:<h5>mail me</h5>}
                     </Link>
-                    <Link href="https://l.instagram.com/?u=https%3A%2F%2Fanfihandmade.etsy.com%2F&e=AT0D5YKnF6Q5bHxZvIBtQ8do5aHfO_9PG7tpt2TmU-8NBRt9Bf3ZdOIh-ia2RT2-IsdIRbxfVTDyN0UKheP0nVKYWJmeoK69Mer0huS933zXu3CCrnDTCw" target="_blank" className='w-full text-center  md:w-1/3 p-3 bg-[#EFBC9B] rounded-full text-[#FBF3D5] '>
-                        <h5>my brooches</h5>
+                    <Link href="https://l.instagram.com/?u=https%3A%2F%2Fanfihandmade.etsy.com%2F&e=AT0D5YKnF6Q5bHxZvIBtQ8do5aHfO_9PG7tpt2TmU-8NBRt9Bf3ZdOIh-ia2RT2-IsdIRbxfVTDyN0UKheP0nVKYWJmeoK69Mer0huS933zXu3CCrnDTCw" target="_blank" className='w-full text-center p-3 md:w-1/3  bg-[#EFBC9B] rounded-full text-[#FBF3D5] '>
+                        {language=='ua'?<h5>брошки</h5>:<h5>my brooches</h5>}
                     </Link>
                     </div>
                 </div>
