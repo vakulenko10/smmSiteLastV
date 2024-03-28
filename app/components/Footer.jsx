@@ -1,10 +1,13 @@
+"use client"
 import Link from 'next/link'
 import  Container  from './Container'
 import React from 'react'
 import { FaLinkedin, FaGithub  } from "react-icons/fa";
+import { useLanguage } from './LanguageContext';
 const Footer = () => {
+    const { language } = useLanguage()
   return (
-    <div className='bg-[#9CAFAA] '>
+    <div className={`bg-[#9CAFAA]  ${language=="ua"?'uaLang':'enLang'}`}>
         <Container>
             <div className='flex flex-col md:flex-row py-5 px-3 justify-between items-center '>
                 <div className='links flex flex-row'>
