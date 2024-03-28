@@ -48,7 +48,8 @@ export const AboutBg = ({collectionName}) => {
             
           </motion.div>
           <motion.div className='absolute w-full h-1/4 bottom-0'>
-            <img className="absolute bottom-0 right-0 h-2/3 rotate-[45deg]" src="https://res.cloudinary.com/dohnhiqxw/image/upload/v1711406822/aboutMe/i6soy7aej5zqe7pldbfu.png"  alt="image"></img>
+            <Link href="#">
+            <img className="absolute bottom-0 right-0 h-2/3 rotate-[45deg]" src="https://res.cloudinary.com/dohnhiqxw/image/upload/v1711406822/aboutMe/i6soy7aej5zqe7pldbfu.png"  alt="image"></img></Link>
           </motion.div>
         </motion.div>
     </div>
