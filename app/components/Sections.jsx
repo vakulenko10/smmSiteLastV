@@ -37,9 +37,9 @@ export const AboutBg = ({collectionName}) => {
      
         <motion.div ref={ref} >
         
-          <motion.div className='h-1/6 md:h-auto ease-in-out absolute w-full bg-[#d6dac867] backdrop-blur top-0 overflow-x-visible text-nowrap '>
+          <motion.div className='h-1/6 overflow-y-hiddden md:h-auto ease-in-out absolute w-full bg-[#d6dac867] backdrop-blur top-0 overflow-x-visible text-nowrap '>
             <motion.h3
-              className=' block ease-in-out w-full z-[10000] text-[#D6DAC8] font-bold text-[70px] md:text-[100px]'
+              className=' text-no-wrap ease-in-out w-full z-[10000] text-[#D6DAC8] font-bold text-[60px] md:text-[100px]'
               style={{x: x }}
               transition={{ type: 'tween', stiffness: 120, damping: 20 }}
             >
@@ -85,7 +85,25 @@ export const FAQSbg = ({collectionName}) => {
             
           </motion.div>
           <motion.div  className='absolute w-full h-1/4 bottom-0 '>
-              <Link href="#"><img className="absolute bottom-0 left-0 w-[100px] h-auto rotate-[-45deg] z-100" src="https://res.cloudinary.com/dohnhiqxw/image/upload/v1711472633/myPortfolio/aus6rmappv4anxjtfdkg.png" alt="image"/></Link>
+              <Link href="#"><img className="absolute bottom-0 right-0 w-[60px] h-auto rotate-[`10deg`] z-100 " src="https://res.cloudinary.com/dohnhiqxw/image/upload/v1711644319/qhg0glehadtke4wbzift.png" alt="image"/></Link>
+              </motion.div>
+    </AnimatePresence>
+  );
+};
+export const MyBlogBg = ({collectionName}) => {
+  // const controls = useAnimation();
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll(); // Get scroll position using useScroll
+  
+  const x = useTransform(scrollYProgress, [0,1], [0, -7000]);
+  return (
+    
+        <AnimatePresence>
+          <motion.div key={`${collectionName}-bg`} ref={ref} className={` z-100 absolute bottom-0 bg-no-repeat ease-in-out w-full h-1/6 bg-cover bg-[url('https://res.cloudinary.com/dohnhiqxw/image/upload/v1711643408/myBlog/nk2bbkf9vd7pzyddtibq.png')]`}>
+            
+          </motion.div>
+          <motion.div  className='absolute w-full h-1/4 bottom-0 '>
+              <Link href="#"><img className="absolute bottom-0 left-0 w-[80px] h-auto rotate-[-45deg] z-100" src="https://res.cloudinary.com/dohnhiqxw/image/upload/v1711643999/myBlog/de0avjqbfegpr6cnnh12.png" alt="image"/></Link>
               </motion.div>
     </AnimatePresence>
   );
@@ -116,10 +134,11 @@ function Sections() {
     fetchData();
   }, []);
   const backgroundToSection = {
-    "aboutmeitems": <AboutBg collectionName="aboutRenderComponent"/>,
-    "helloitems": <HelloBg collectionName="WelcomeRenderComponent"/>,
-    "myportfolioitems": <PortfolioBg collectionName="PortfolioRenderComponent" />,
-    "faqsitems": <FAQSbg collectionName="FAQSRenderComponent"/>
+    "aboutmeitems": <AboutBg collectionName="aboutBGRenderComponent"/>,
+    "helloitems": <HelloBg collectionName="WelcomeBGRenderComponent"/>,
+    "myportfolioitems": <PortfolioBg collectionName="PortfolioBGRenderComponent" />,
+    "faqsitems": <FAQSbg collectionName="FAQSBGRenderComponent"/>,
+    "myblogitems":<MyBlogBg collectionName="BlogBGRenderComponent"/>
 
   }
 

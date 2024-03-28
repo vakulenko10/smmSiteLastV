@@ -35,8 +35,8 @@ const Gallery = ({ sectionData }) => {
   };
 
   return (
-    <motion.div className='relative py-[10px] flex flex-col justify-center items-center gap-[10px] md:grid-rows-2 h-full place-items-center' ref={ref} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
-      <motion.div  className={` ${isPortfolioOpened ? 'grid grid-cols-2 md:grid-cols-3 pt-3 px-5 gap-3 w-screen overflow-x-hidden h-screen absolute top-0 overflow-y-visible bg-[#00000080] ' : ' hover:scale-110 transform  w-3/4 md:w-1/2 h-1/2 rounded-lg p-3 text-center transition  shadow-[0px_0px_70px_#FBF3D5] hover:shadow-[0px_0px_100px_#FBF3D5] bg-[#9CAFAA] flex justify-center items-center hover:'}`} onClick={handlePortfolioOpened}>{isPortfolioOpened?null:<h5 className='text-white md:text-[3em]'>click to see my portfolio</h5>}
+    <motion.div className={`${isPortfolioOpened ?'fixed':''}relative py-[10px] flex flex-col justify-center items-center gap-[10px] md:grid-rows-2 h-full place-items-center`} ref={ref} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
+      <motion.div  className={` ${isPortfolioOpened ? 'absolute grid grid-cols-2 md:grid-cols-3 pt-3 px-5 gap-3 w-screen overflow-x-hidden h-screen  top-0 overflow-y-visible bg-[#00000080] ' : ' hover:scale-110 transform  w-3/4 md:w-1/2 h-1/2 rounded-lg p-3 text-center transition  shadow-[0px_0px_70px_#FBF3D5] hover:shadow-[0px_0px_100px_#FBF3D5] bg-[#9CAFAA] flex justify-center items-center hover:'}`} onClick={handlePortfolioOpened}>{isPortfolioOpened?null:<h5 className='text-white md:text-[3em]'>click to see my portfolio</h5>}
         {sectionData.map((sectionItem, index) => (
           <motion.div
             key={index}
@@ -72,7 +72,7 @@ const Gallery = ({ sectionData }) => {
         )}
       </motion.div>
       {isPortfolioOpened && (
-        <button className="absolute top-0 right-0 mt-2 mr-2 bg-gray-800 text-white py-1 px-2 rounded-md" onClick={handlePortfolioClose}>
+        <button className="absolute top-0 right-0 mt-2  bg-gray-800 text-white py-1 px-2 rounded-md" onClick={handlePortfolioClose}>
           Close portfolio
         </button>
       )}

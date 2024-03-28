@@ -15,10 +15,10 @@ export const collectionsToSections = {
 export const Sections = Object.values(collectionsToSections);
 export const sectionClasses = {
   "helloitems": `overflow-x-hidden relative h-screen bg-[#D6DAC8]  bg-center pb-[10px] md:pb-0  bg-contain  `,
-    "myportfolioitems": 'relative bg-[#9CAFAA] h-[100vh] md:min-h-[100vh]',
-    "faqsitems": 'relative min-h-[100vh] bg-[#9CAFAA] py-[10px] flex justify-center items-center',
+    "myportfolioitems": ' bg-[#9CAFAA] h-[100vh] md:min-h-[100vh]',
+    "faqsitems": 'relative min-h-screen h-fit bg-[#9CAFAA] py-[10px] pb-[100px] md:pb-auto flex justify-center items-center',
     "aboutmeitems": 'relative md:h-[100vh] bg-[#9CAFAA] py-[10px] ',
-    "myblogitems": 'relative md:h-[100vh] bg-[#FBF3D5] py-[10px] '
+    "myblogitems": 'relative md:h-[100vh] bg-[#9CAFAA] py-[10px] '
   
   }
 
