@@ -56,7 +56,7 @@ const Section = ({ collectionName, renderType, className, backgroundItem}) => {
   }, [language, collectionName]);
   const RenderTypeToComponent = (renderType, data) => {
     if (!data || !data.length) {
-      return null; // Return null if sectionData is empty or null
+      return <></>; // Return null if sectionData is empty or null
     }
   
       switch (renderType) {
@@ -69,7 +69,7 @@ const Section = ({ collectionName, renderType, className, backgroundItem}) => {
         case "accordion":
           return <Accordion sectionData={data} />;
         default:
-          return null;
+          return <></>;
       }
     
   };

@@ -3,14 +3,15 @@ import React, { useState , useRef} from 'react';
 import { AnimatePresence, motion , useInView} from 'framer-motion';
 import { AiOutlineMinus,  AiOutlinePlus } from "react-icons/ai";
 import { useLanguage } from './LanguageContext';
-import { renderIntoDocument } from 'react-dom/test-utils';
+// import { renderIntoDocument } from 'react-dom/test-utils';
 import { renderTextByProperty } from './mainconsts';
 const Accordion = ({ sectionData }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const ref = useRef(null)
   const isInView = useInView(ref)
   const onItemClick = (index) => {
-    setActiveIndex(index === activeIndex ? null : index);
+    index!==activeIndex&&setActiveIndex(index);
+   
   };
  const {language} = useLanguage();
   return (

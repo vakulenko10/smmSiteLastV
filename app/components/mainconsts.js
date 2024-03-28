@@ -30,7 +30,9 @@ export const SectionToRenderType = {
     "myblogitems":"carousel"
 }
 export function renderTextByProperty(property, text, key, className) {
-    
+  // console.log('Rendering text for property:', property);
+  // console.log('Text value:', text);
+
     if (property.includes('Title')) {
       return <h1 className={`${className}`} key={`${property}-${text}-${key}`}>{text}</h1>;
     } else if (property.includes('Description')) {
