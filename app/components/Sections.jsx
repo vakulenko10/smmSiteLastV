@@ -31,7 +31,7 @@ export const AboutBg = ({collectionName}) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll(); // Get scroll position using useScroll
   
-  const x = useTransform(scrollYProgress, [0,1], ['-30%', '100%']);
+  const x = useTransform(scrollYProgress, [0, 0.2 , 1], ['-60%',"0%",'100%']);
   return (
     <div key={collectionName}>
      
